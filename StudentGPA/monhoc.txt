@@ -1,0 +1,2 @@
+100,TTCS,3,Chuyen nganh
+101,Vật lý,3,Dai cuong

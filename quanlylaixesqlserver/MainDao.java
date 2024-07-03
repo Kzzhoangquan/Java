@@ -64,13 +64,12 @@ public class MainDao {
 
     public static void luulaixe(LaiXe laixe) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            String sql = "INSERT INTO LaiXe (malx, hoten, diachi, sodt, trinhdo) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO LaiXe ( hoten, diachi, sodt, trinhdo) VALUES ( ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, laixe.getMalx());
-                statement.setString(2, laixe.getHoten());
-                statement.setString(3, laixe.getDiachi());
-                statement.setString(4, laixe.getSodt());
-                statement.setString(5, laixe.getTrinhdo());
+                statement.setString(1, laixe.getHoten());
+                statement.setString(2, laixe.getDiachi());
+                statement.setString(3, laixe.getSodt());
+                statement.setString(4, laixe.getTrinhdo());
 
                 int rowsInserted = statement.executeUpdate();
                 if (rowsInserted > 0) {
@@ -84,11 +83,11 @@ public class MainDao {
 
     public static void luutuyen(Tuyen tuyen) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            String sql = "INSERT INTO Tuyen (matuyen, khoangcach, sodiemdung) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Tuyen ( khoangcach, sodiemdung) VALUES ( ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, tuyen.getMatuyen());
-                statement.setFloat(2, (float) tuyen.getKhoangcach()); // sử dụng setFloat với kiểu FLOAT trong SQL Server
-                statement.setInt(3, tuyen.getSodiemdung());
+//                statement.setInt(1, tuyen.getMatuyen());
+                statement.setFloat(1, (float) tuyen.getKhoangcach()); // sử dụng setFloat với kiểu FLOAT trong SQL Server
+                statement.setInt(2, tuyen.getSodiemdung());
 
                 int rowsInserted = statement.executeUpdate();
                 if (rowsInserted > 0) {
